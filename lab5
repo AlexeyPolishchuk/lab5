@@ -1,0 +1,72 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+
+/* Средний уровень
+Задание: создать текстовый файл в текстовом редакторе. Организовать
+просмотр содержимого файла и выполнения действий в соответствии с услови-
+ем индивидуального задания. Обеспечить сохранение всех полученных резуль-
+татов в новый файл.
+Вариант 11.
+Дан файл f, компоненты которого являются действительными числами.
+Найти сумму компонент файла. */
+
+void task2()
+{
+	ofstream file("C:\\lab5\\Numbers.txt");
+	if (!file.is_open())
+	{
+		cout << "Open file error";
+	}
+	else
+	{
+		file << "\n 5 -1 50 21 -1 7 18 -8" << endl;
+	}
+	file.close();
+  
+}
+void task2_1()
+{
+	string n;
+	ifstream file("C:\\lab5\\Numbers.txt");
+	ofstream sfile("C:\\lab5\\Numbers2.txt");
+	if (!file.is_open())
+	{
+		cout << "Open file error";
+	}
+	else
+	{
+		double s = 0, n;
+		while (file >> n)
+		{
+			s += n;
+		}
+		sfile << "\nSum: " << s;
+	}
+	sfile.close();
+	file.close();
+}
+void task2_2()
+{
+	ifstream sfile("C:\\lab5\\Numbers2.txt");
+	string str;
+	if (sfile.is_open())
+	{
+		while(getline(sfile, str))
+		{
+			cout << str << endl;
+		}
+	}
+	sfile.close();
+}
+
+
+
+int main()
+{
+	system("cls");
+	task2(); task2_1(); task2_2();
+    
+}
